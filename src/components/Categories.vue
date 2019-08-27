@@ -1,47 +1,43 @@
 <template>
-  <div>
+  <article>
     <h1>Categories</h1>
     <section v-if="errors">
-        <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+      <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
     </section>
-
     <ul v-if="categories && categories.length">
-    <li v-for="(category,id) of categories" :key="category.id">
+    <li v-for="(category) of categories" :key="category">
       <router-link exact :to="{ name: 'CategoryWise',  query: { category:category } }" >{{category}}</router-link>
-      
     </li>
-  </ul>
-  </div>
+    </ul>
+  </article>
 </template>
 
 <style scoped>
 h1 {
-  color: rgb(24, 26, 24)
+  color: #06BC9B;
 }
 div{
-  margin-left: 100px
+  margin-left: 175px
 }
 </style>
 
 <script>
-import axios from 'axios'; 
-
+import axios from 'axios'
 export default {
-  data(){
-    return{
-      categories:[],
+  data () {
+    return {
+      categories: [],
       errors: false
     }
   },
-  mounted(){
+  mounted () {
     axios.get('https://api.publicapis.org/categories')
       .then(response => {
-         this.categories = response.data
+        this.categories = response.data
       })
       .catch(e => {
-          this.errors = true
+        this.errors = true
       })
-    }
-
+  }
 }
 </script>

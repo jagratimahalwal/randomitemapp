@@ -1,31 +1,31 @@
 <template>
   <div id="app">
-    <Sidebar />
+    <Sidenav />
     <router-view/>
     <Footer />
   </div>
 </template>
 
 <script>
-import Sidebar from './components/Sidebar';
-import Footer from './components/Footer';
+import Footer from './components/Footer'
+import Sidenav from './components/Sidenav'
 
 export default {
   name: 'App',
-  components:{
-  Sidebar,
-  Footer
+  components: {
+    Sidenav,
+    Footer
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: left;
   color: #2c3e50;
   margin-top: 0px;
+  background-color: #EEEEEE;
+   max-height: 100vh;
+  overflow: auto;
 }
 </style>

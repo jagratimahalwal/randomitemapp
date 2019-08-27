@@ -1,20 +1,21 @@
 <template>
-    <div>
-        <p class="text-left">Design by Jagrati.</p>
-        <p class="text-left">Contact : jagratimahalwal1992@gmail.com</p>
-    </div>
+  <div>
+    <p class="text-right">Design by Jagrati.</p>
+    <p class="text-right">Contact : jagratimahalwal1992@gmail.com</p>
+  </div>
 </template>
 
 <script>
 export default {
-    name:'Footer'
+  name: 'Footer'
 }
 </script>
 
 <style scoped>
 div{
-    margin-left: 100px;
-    margin-top: 20px;
-    bottom: 10px;
+  text-align: right;
+  margin-top: 30px;
+  margin-right: 10px;
+  bottom: 10px;
 }
 </style>
