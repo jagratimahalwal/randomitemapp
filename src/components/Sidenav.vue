@@ -8,38 +8,31 @@
   </div>
 
   <aside id="main">
-  <span style="font-size:30px;cursor:pointer"><button class="btn-circle" v-on:click="hidden=!hidden">&#9776;</button></span>
+  <span style="font-size:30px;cursor:pointer"><button class="btn-circle" v-on:click="hidden=!hidden" title="Menu">&#9776;</button></span>
   </aside>
 </div>
 </template>
 
 <style scoped>
-body {
-  font-family: "Lato", sans-serif;
-  transition: background-color .5s;
-}
-
 .sidenav {
   height: 100%;
   width: 18%;
   position: fixed;
-  z-index: 1;
+  z-index: 20;
   top: 0;
   left: 0;
-  background-color: #dddddd;
+  background-color: lavender;
   overflow-x: hidden;
   transition: background 0.5s;
   padding-top: 60px;
-  opacity: 60%;
 }
 
 .sidenav a {
   padding: 8px 8px 8px 5px;
   text-decoration: none;
   font-size: 20px;
-  color: #06BC9B;
+  color: black;
   display: block;
-  opacity: 60%;
   transition: 0.5s ease-in-out;
 }
 
@@ -53,7 +46,7 @@ body {
   right: 0px;
   font-size: 40px;
   margin-left: 50px;
-  color: #0c0b0b;
+  color: #070707;
 }
 
 #main {

@@ -1,10 +1,10 @@
 <template>
-  <article>
-    <h1>Categories</h1>
+  <article class='article-content'>
+    <!-- h2 class='page-heading'><strong>Categories</strong></h2 -->
     <section v-if="errors">
-      <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+      <p class='page-heading'>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
     </section>
-    <ul v-if="categories && categories.length">
+    <ul v-if="categories && categories.length" class='display-list'>
     <li v-for="(category) of categories" :key="category">
       <router-link exact :to="{ name: 'CategoryWise',  query: { category:category } }" >{{category}}</router-link>
     </li>
@@ -13,12 +13,10 @@
 </template>
 
 <style scoped>
-h1 {
-  color: #06BC9B;
+.display-list{
+  margin-top: 2%;
 }
-div{
-  margin-left: 175px
-}
+
 </style>
 
 <script>
