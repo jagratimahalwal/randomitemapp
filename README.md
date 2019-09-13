@@ -1,6 +1,17 @@
 # newproject
 
-> A Vue.js project
+> A Vue.js project, 
+
+A website which show random data from the API https://api.publicapis.org/
+
+The project have below functionalities :-
+1. Home Page :- You can see various API links in the below slide show, want to sort them alphabettically click on the arrow buttons.
+2. Categories Page :- Want to have more such API links, click on category tab there you will get the links to APIs category wise.
+3. Random Item/API :- Don't know what you want, go to Randomize tab, it will give you a different API evey time you click random button.
+
+
+
+
 
 ## Build Setup
 
