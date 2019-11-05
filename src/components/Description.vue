@@ -1,58 +1,39 @@
 <template>
-  <article>
-    <h2>Know More About : {{title}}</h2>
+  <article class='article-content'>
+    <h2 class='page-heading'>Know More About : {{title}}</h2>
     <section class="card" style="width:20rem">
-      <h5 class="card-title">{{title }}</h5>
-      <p class="card-body">
+      <strong class="card-title">{{title }}</strong>
+      <div class="card-body">
         {{desc}}
-      </p>
-      <nav class="overlay">
-        <p class="is-descp">{{desc}} </p>
-        <a :href="link" class="btn btn-primary is-centered"><span>Visit Site</span></a>
-      </nav>
+        <p><a :href="link">Visit Site</a></p>
+      </div>
     </section>
     <hr>
-    <h5>Relevant Items</h5>
+    <h5 class='page-heading'>Relevant Items</h5>
     <section v-if="this.errors">
-      <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+      <p class='page-heading'>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
     </section>
-    <section v-else class="row top-buffer" v-for="i in Math.ceil(posts.length / 3)" v-bind:key="i">
-      <section class="col-sm-3" v-for="(post) in posts.slice((i - 1) * 3, i * 3)" v-bind:key="post">
+    <section v-else class="row top-buffer" v-for="i in Math.ceil(posts.length / 3)" v-bind:key="i" style="width:80%">
+      <section class="col-sm-4" v-for="(post) in posts.slice((i - 1) * 3, i * 3)" v-bind:key="post.API">
+        <a :href="post.Link">
         <section class="card">
-          <h5 class="card-title">{{post.API}}</h5>
-          <p class="card-body"></p>
-          <nav class="overlay">
-            <p class="is-descp"> {{post.Description}}</p>
-            <a :href="post.Link" class="btn btn-primary is-centered"><span>Visit</span></a>
-          </nav>
+          <p class="card-title">{{post.API}}</p>
+          <div class="card-text">
+            <small class="text-muted">{{post.Description}}</small>
+          </div>
        </section>
+       </a>
       </section>
     </section>
   </article>
 </template>
 
 <style scoped>
-h2 {
-  color: #06BC9B;
-}
 .top-buffer{
   margin-top:10px
 }
-.btn{
-  background-color: transparent;
-  border-color: #8C43FF;
-  color:black;
-  margin: 0 auto;
-  font-size: 18px;
-  padding: .75rem;
-  font-weight: 400;
-  border-width: 2px;
-  border-radius: 290486px;
-}
-.btn:hover{
-  border-color:#efefef;
-  background-color: #8C43FF;
-  color:#fff;
+.card{
+  height:12rem;
 }
 @media screen and (max-width:600px){
   /* For Small Screens */
@@ -75,6 +56,9 @@ h2 {
   }
   .top-buffer{
     margin-top: 0px;
+  }
+  .card-text{
+    display: none;
   }
 }
 </style>

@@ -5,6 +5,7 @@ import Home from '@/components/Home'
 import RandomItem from '@/components/RandomItem'
 import Description from '@/components/Description'
 import CategoryWise from '@/components/CategoryWise'
+import PageNotFound from '@/components/PageNotFound'
 
 Vue.use(Router)
 
@@ -12,7 +13,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: Home
     },
     {
@@ -34,6 +35,11 @@ export default new Router({
       path: '/CategoryWise',
       name: 'CategoryWise',
       component: CategoryWise
+    },
+    {
+      path: '/*',
+      name: 'PageNotFound',
+      component: PageNotFound
     }
   ]
 })

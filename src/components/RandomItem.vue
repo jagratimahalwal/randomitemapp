@@ -1,25 +1,24 @@
 <template>
-  <article>
-    <h1>It's Fun !!!! </h1>
+  <article class='article-content'>
+    <h2 class='page-heading'><strong>It's Fun !!!! </strong></h2>
     <section v-if="errors">
-      <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+      <p class='page-heading'>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
     </section>
-    <div v-if="randomPost && randomPost.length">
+    <div id="card-container" v-if="randomPost">
+      <p>
+        Click on Randomize button on bottom-right of card to get a new information
+      </p>
       <section class="card" style="width:20rem"  >
-        <h5 class="card-title">{{ randomPost[0].API }}</h5>
-        <p class="card-body">
-          {{randomPost[0].Description}}
-        </p>
-        <nav class="overlay">
-          <p class="is-descp">{{randomPost[0].Description}}</p>
-          <a :href="randomPost[0].Link" class="btn is-rounded is-centered">Link</a>
-        </nav>
+        <img class="card-img-top" src="@/assets/2.jpg" alt="Card image cap">
+        <h5 class="card-title"><a :href="randomPost.Link">{{ randomPost.API }}</a></h5>
+        <a :href="randomPost.Link">
+          <div class="card-body">
+            {{randomPost.Description}}
+          </div>
+        </a>
+        <a href='#' class='is--random text-right' @click="randomRefresh" title="Randomize">&#128472;</a>
       </section>
     </div>
-    <hr>
-    <span>
-      <button class="btn col-md-2 is-random" @click="randomRefresh">Randomize</button>
-    </span>
   </article>
 </template>
 
@@ -28,17 +27,17 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      randomPost: [],
+      randomPost: {},
       errors: false
     }
   },
   methods: {
     // API call to get random Item
     randomRefresh () {
-      this.randomPost.pop()
+      this.randomPost = {} // Setting randomPost blank on load.
       axios.get('https://api.publicapis.org/random?auth=null')
         .then(response => {
-          this.randomPost.push(response.data.entries[0])
+          this.randomPost = response.data.entries[0]
         })
         .catch(e => {
           this.errors = true
@@ -52,52 +51,17 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  color: #06BC9B;
-}
-div{
-  /* margin-left: 15px; */
-  display: inline-block;
+#card-container{
+  width:90%;
   margin-top: 25px;
 }
-.is-rounded{
-  background-color: transparent;
-  border-color: #8C43FF;
-  color: #000000;
-  margin: 0 auto;
-  font-size: 18px;
-  padding: .75rem;
-  font-weight: 400;
-  border-width: 2px;
-  border-radius: 290486px;
+.is--random{
+  font-size: 24px;
 }
-.is-rounded:hover{
-  border-color:#efefef;
-  background-color: #8C43FF;
-  color:#fff;
+
+.card{
+  margin: 0 auto; /* Added to make the card at center position */
+  float: none;
 }
-.is-random{
-  border-width: 2px;
-  border-radius: 290732px;
-  background-color: #06BC9B;
-}
-@media screen and (max-width:600px){
-  .is-random{
-    margin-right: 30px;
-  }
-  [class*="col-"] {
-    width: 50%;
-    border: 1px ;
-    margin-bottom: 8px;
-    margin-right: 20px;
-  }
-}
-@media screen and (min-width: 600px) and (max-width: 768px){
-  [class*="col-"] {
-    width: 50%;
-    border: 1px;
-    margin-bottom: 8px;
-    margin-right: 30px;
-  }
-}
+
 </style>
